@@ -1,38 +1,388 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
   min-height: 100vh;
+  background: #f6f8fb;
+  color: #172033;
+}
+
+.Navbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 18px clamp(20px, 5vw, 72px);
+  background: rgba(255, 255, 255, 0.94);
+  border-bottom: 1px solid #dde5ef;
+  backdrop-filter: blur(16px);
+}
+
+.Navbar__brand {
+  color: #172033;
+  font-size: 1.2rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.Navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.Navbar__link {
+  min-width: 82px;
+  padding: 10px 14px;
+  border-radius: 6px;
+  color: #4f5e73;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  transition: background 180ms ease, color 180ms ease;
+}
+
+.Navbar__link:hover,
+.Navbar__link--active {
+  background: #e7eef8;
+  color: #0d4f8b;
+}
+
+.HomePage,
+.CareersPage {
+  overflow: hidden;
+}
+
+.HomePage__hero,
+.CareersPage__hero {
+  padding: clamp(56px, 9vw, 104px) clamp(20px, 5vw, 72px);
+}
+
+.HomePage__hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.7fr);
+  align-items: center;
+  gap: clamp(32px, 6vw, 76px);
+  background:
+    linear-gradient(135deg, rgba(9, 86, 146, 0.92), rgba(18, 32, 51, 0.92)),
+    url('https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1800&q=80');
+  background-position: center;
+  background-size: cover;
+  color: #ffffff;
+}
+
+.HomePage__heroContent,
+.CareersPage__hero {
+  max-width: 780px;
+}
+
+.HomePage__eyebrow,
+.CareersPage__eyebrow {
+  margin: 0 0 12px;
+  color: #0d4f8b;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.HomePage__hero .HomePage__eyebrow,
+.CareersPage__hero .CareersPage__eyebrow {
+  color: #8bd7ff;
+}
+
+.HomePage__title,
+.CareersPage__title {
+  margin: 0;
+  font-size: clamp(2.3rem, 5vw, 4.9rem);
+  line-height: 1.02;
+  letter-spacing: 0;
+}
+
+.HomePage__intro,
+.CareersPage__intro {
+  margin: 22px 0 0;
+  max-width: 680px;
+  color: #dbe8f4;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.7;
+}
+
+.HomePage__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 34px;
+}
+
+.HomePage__primaryButton,
+.HomePage__secondaryButton,
+.CareersPage__submitButton {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  min-height: 48px;
+  padding: 0 20px;
+  border: 0;
+  border-radius: 6px;
+  font-weight: 800;
+  text-decoration: none;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.HomePage__primaryButton,
+.CareersPage__submitButton {
+  background: #1fa971;
+  color: #ffffff;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.HomePage__secondaryButton {
+  background: #ffffff;
+  color: #0d4f8b;
+}
+
+.HomePage__metrics {
+  display: grid;
+  gap: 16px;
+}
+
+.HomePage__metric {
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.HomePage__metricValue {
+  display: block;
+  font-size: clamp(2rem, 4vw, 3.3rem);
+  font-weight: 800;
+}
+
+.HomePage__metricLabel {
+  display: block;
+  margin-top: 6px;
+  color: #dbe8f4;
+  font-weight: 700;
+}
+
+.HomePage__section {
+  padding: clamp(48px, 7vw, 86px) clamp(20px, 5vw, 72px);
+  background: #ffffff;
+}
+
+.HomePage__section--muted {
+  background: #edf3f8;
+}
+
+.HomePage__sectionHeader,
+.CareersPage__sectionHeader {
+  max-width: 680px;
+  margin-bottom: 30px;
+}
+
+.HomePage__sectionTitle,
+.CareersPage__sectionTitle {
+  margin: 0;
+  color: #172033;
+  font-size: clamp(1.8rem, 3vw, 2.7rem);
+  line-height: 1.15;
+  letter-spacing: 0;
+}
+
+.HomePage__expertiseGrid,
+.HomePage__projectList {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.HomePage__projectList {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.HomePage__expertiseCard,
+.HomePage__projectCard,
+.CareersPage__jobCard,
+.CareersPage__applicationPanel {
+  border: 1px solid #dce4ee;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 18px 40px rgba(22, 36, 55, 0.08);
+}
+
+.HomePage__expertiseCard,
+.HomePage__projectCard {
+  min-height: 190px;
+  padding: 24px;
+}
+
+.HomePage__expertiseMark {
+  display: block;
+  width: 42px;
+  height: 6px;
+  margin-bottom: 22px;
+  border-radius: 999px;
+  background: #1fa971;
+}
+
+.HomePage__cardTitle,
+.CareersPage__jobTitle {
+  margin: 0;
+  color: #172033;
+  font-size: 1.18rem;
+  line-height: 1.25;
+}
+
+.HomePage__cardText,
+.CareersPage__jobSummary {
+  margin: 14px 0 0;
+  color: #5d6978;
+  line-height: 1.65;
+}
+
+.CareersPage {
+  background: #f6f8fb;
+}
+
+.CareersPage__hero {
+  max-width: none;
+  background:
+    linear-gradient(135deg, rgba(18, 32, 51, 0.92), rgba(5, 91, 122, 0.88)),
+    url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1800&q=80');
+  background-position: center;
+  background-size: cover;
+  color: #ffffff;
+}
+
+.CareersPage__content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
+  gap: 28px;
+  padding: clamp(42px, 6vw, 72px) clamp(20px, 5vw, 72px);
+}
+
+.CareersPage__jobs {
+  min-width: 0;
+}
+
+.CareersPage__jobCard {
+  padding: 24px;
+}
+
+.CareersPage__jobCard + .CareersPage__jobCard {
+  margin-top: 18px;
+}
+
+.CareersPage__jobTopline {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.CareersPage__jobType {
+  flex: 0 0 auto;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: #e5f6ee;
+  color: #0c7a50;
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.CareersPage__jobLocation {
+  margin: 8px 0 0;
+  color: #0d4f8b;
+  font-weight: 800;
+}
+
+.CareersPage__applicationPanel {
+  align-self: start;
+  padding: 26px;
+}
+
+.CareersPage__form {
+  display: grid;
+  gap: 16px;
+}
+
+.CareersPage__field {
+  display: grid;
+  gap: 8px;
+}
+
+.CareersPage__label {
+  color: #2c3748;
+  font-weight: 800;
+}
+
+.CareersPage__input,
+.CareersPage__textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #cdd7e3;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #172033;
+  font: inherit;
+}
+
+.CareersPage__input {
+  min-height: 46px;
+  padding: 0 14px;
+}
+
+.CareersPage__textarea {
+  resize: vertical;
+  padding: 12px 14px;
+}
+
+.CareersPage__input:focus,
+.CareersPage__textarea:focus {
+  border-color: #0d4f8b;
+  outline: 3px solid rgba(13, 79, 139, 0.18);
+}
+
+.CareersPage__submitButton {
+  width: 100%;
+  margin-top: 4px;
+  font-size: 1rem;
+}
+
+@media (max-width: 980px) {
+  .HomePage__hero,
+  .CareersPage__content {
+    grid-template-columns: 1fr;
   }
-  to {
-    transform: rotate(360deg);
+
+  .HomePage__expertiseGrid,
+  .HomePage__projectList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .Navbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .Navbar__links {
+    width: 100%;
+  }
+
+  .Navbar__link {
+    flex: 1;
+  }
+
+  .HomePage__expertiseGrid,
+  .HomePage__projectList {
+    grid-template-columns: 1fr;
+  }
+
+  .CareersPage__jobTopline {
+    align-items: flex-start;
+    flex-direction: column;
   }
 }
